@@ -11,10 +11,7 @@
 
 </head>
 
-<body>
-    <nav>
-        <a href="index.php">🏠 Top List</a>
-        <a href="brands.php">🏆 Brand</a>
-        <a href="about.php">ℹ️ About Us</a>
-        <a href="contact.php">📩 Contact</a>
-    </nav>
+<nav class="navigation">
+    <a class="nav-btn" href="index.php">🏆 Top List</a>
+    <a class="nav-btn" href="add_brand.php">🚀 Add Brand</a>
+</nav>

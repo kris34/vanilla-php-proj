@@ -10,7 +10,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #eee9e9;
   color: #333;
   line-height: 1.5;
 }
@@ -24,5 +24,94 @@ a:hover {
 }
 
 body {
-    font-family: var(--font-fredoka);
+  font-family: var(--font-fredoka);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  gap: 3em;
+  align-items: center;
+  flex: 1 1;
+}
+
+.nav-btn {
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-decoration: none !important;
+  user-select: none;
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+}
+
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 1em;
+}
+
+.top-list-title {
+  font-weight: 600;
+}
+
+.home-desc-wrapper {
+  text-align: center;
+  display: flex;
+  max-width: 50%;
+}
+
+.add-brand-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4em;
+  margin-top: 3em;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background-color: rgb(231, 228, 228);
+}
+
+.add-brand-form {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-wrapper {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper input {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 7px;
+  height: 3em;
+  width: 20em;
+  padding: 9px;
+}
+
+.input-wrapper input {
+  outline: none;
+}
+
+select {
+  padding: 5px;
 }
