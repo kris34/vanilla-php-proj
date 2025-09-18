@@ -1,4 +1,11 @@
-<?php include 'header.php'; ?>
+<?php
+include 'header.php';
+include '../src/Brand.php';
+
+$brand = new Brand();
+$brands = $brand->get_brands();
+?>
+
 
 <div class="wrapper">
     <div class="home-wrapper">
@@ -10,7 +17,7 @@
                 🌍📱 Discover the best brands from around the world, complete with ratings, images, and reviews ⭐🖼️.
         </div>
 
-        <table border="1" cellpadding="10" cellspacing="0">
+        <table cellpadding="10" cellspacing="0">
             <thead>
                 <tr>
                     <th>🏷️ Brand</th>
@@ -19,39 +26,30 @@
                     <th>🌍 Country</th>
                 </tr>
             </thead>
-
             <tbody>
-                <tr>
-                    <td>Apple</td>
-                    <td><img src="https://via.placeholder.com/50x50.png?text=Apple" alt="Apple Logo"></td>
-                    <td>5 ⭐</td>
-                    <td>US 🇺🇸</td>
-                </tr>
-                <tr>
-                    <td>Nike</td>
-                    <td><img src="https://via.placeholder.com/50x50.png?text=Nike" alt="Nike Logo"></td>
-                    <td>4 ⭐</td>
-                    <td>US 🇺🇸</td>
-                </tr>
-                <tr>
-                    <td>Samsung</td>
-                    <td><img src="https://via.placeholder.com/50x50.png?text=Samsung" alt="Samsung Logo"></td>
-                    <td>4 ⭐</td>
-                    <td>KR 🇰🇷</td>
-                </tr>
-                <tr>
-                    <td>Coca-Cola</td>
-                    <td><img src="https://via.placeholder.com/50x50.png?text=Coca-Cola" alt="Coca-Cola Logo"></td>
-                    <td>5 ⭐</td>
-                    <td>US 🇺🇸</td>
-                </tr>
-                <tr>
-                    <td>Adidas</td>
-                    <td><img src="https://via.placeholder.com/50x50.png?text=Adidas" alt="Adidas Logo"></td>
-                    <td>4 ⭐</td>
-                    <td>DE 🇩🇪</td>
-                </tr>
+                <?php if (!empty($brands)): ?>
+                    <?php foreach ($brands as $b): ?>
+                        <tr>
+                            <td data-label="🏷️ Brand"><?php echo htmlspecialchars($b['brand_name']); ?></td>
+                            <td data-label="🖼️ Logo">
+                                <img src="<?php echo htmlspecialchars($b['brand_image']); ?>"
+                                    alt="<?php echo htmlspecialchars($b['brand_name']); ?>"
+                                    width="50" />
+                            </td>
+                            <td data-label="⭐ Rating"><?php echo str_repeat('⭐', (int)$b['rating']); ?></td>
+                            <td data-label="Country"><?php echo htmlspecialchars($b['country'] ?? 'XX'); ?></td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="4">No brands found.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
+
+
+
         </table>
     </div>
 </div>

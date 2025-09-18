@@ -1,9 +1,36 @@
-<?php include "header.php"; ?>
+<?php
+include "header.php";
+include '../src/Brand.php';
+
+$brand = new Brand();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['brand_name'] ?? '';
+    $image = $_POST['brand_image'] ?? '';
+    $rating = $_POST['rating'] ?? '';
+
+    if ($name && $image && $rating) {
+        $success = $brand->create_brand($name, $image, $rating);
+
+        if ($success === 'exists') {
+            $message = "⚠️ Brand already exists!";
+        } elseif ($success) {
+            $message = "✅ Brand added successfully!";
+        } else {
+            $message = "❌ Failed to add brand.";
+        }
+    } else {
+        $message = "⚠️ Please fill in all fields.";
+    }
+}
+
+?>
+
 
 <div class="wrapper">
     <div class="add-brand-wrapper">
         <h2 class="top-list-title">Add a Brand</h2>
-        <form class="add-brand-form">
+        <form class="add-brand-form" method="POST">
             <div class="input-wrapper">
                 <label>🏷️ Brand Name</label>
                 <input name="brand_name" placeholder="e.g., Nike" />
@@ -24,7 +51,9 @@
                 </select>
             </div>
 
-            <button type="submit" class="submit-btn">➕ Add Brand 🎉</button>
+            <button type="submit" class="submit-btn">Add Brand</button>
         </form>
+
+        <?php if (!empty($message)) echo "<p>$message</p>"; ?>
     </div>
 </div>
