@@ -132,6 +132,23 @@ select {
   transform: scale(0.97);
 }
 
+.btn-delete {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-delete:hover {
+  background-color: #cc0000;
+}
+
+.btn-delete:active {
+  transform: scale(0.97);
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
