@@ -13,14 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $success = $brand->create_brand($name, $image, $rating);
 
         if ($success === 'exists') {
-            $message = "⚠️ Brand already exists!";
+            $message = "Brand already exists!";
         } elseif ($success) {
-            $message = "✅ Brand added successfully!";
+            $message = "Brand added successfully!";
         } else {
-            $message = "❌ Failed to add brand.";
+            $message = "Failed to add brand.";
         }
     } else {
-        $message = "⚠️ Please fill in all fields.";
+        $message = "Please fill in all fields.";
     }
 }
 

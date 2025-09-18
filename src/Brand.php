@@ -85,4 +85,36 @@ class Brand
             return ['status' => 'error', 'message' => $e->getMessage()];
         }
     }
+
+
+    public function update_brand($id, $name, $image, $rating)
+    {
+        try {
+            if (!$id || empty($name) || empty($image) || $rating === null) {
+                return ['status' => 'error', 'message' => 'ID, name, image, and rating are required'];
+            }
+
+            $country = $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'XX';
+
+            $query = $this->pdo->prepare(
+                "UPDATE brands 
+                 SET brand_name = :name, brand_image = :image, rating = :rating, country = :country
+                 WHERE id = :id"
+            );
+
+            $query->bindParam(':name', $name, PDO::PARAM_STR);
+            $query->bindParam(':image', $image, PDO::PARAM_STR);
+            $query->bindParam(':rating', $rating, PDO::PARAM_INT);
+            $query->bindParam(':country', $country, PDO::PARAM_STR);
+            $query->bindParam(':id', $id, PDO::PARAM_INT);
+
+            if ($query->execute()) {
+                return ['status' => 'success', 'message' => 'Brand updated'];
+            } else {
+                return ['status' => 'error', 'message' => 'Failed to update brand'];
+            }
+        } catch (PDOException $e) {
+            return ['status' => 'error', 'message' => $e->getMessage()];
+        }
+    }
 }

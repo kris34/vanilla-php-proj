@@ -132,21 +132,59 @@ select {
   transform: scale(0.97);
 }
 
+.actions-wrap button,
+.actions-wrap a {
+  height: 36px;
+  line-height: 1.2;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-delete {
-  background-color: #ff4d4d;
-  color: white;
   border: none;
-  padding: 4px 8px;
-  cursor: pointer;
-  border-radius: 5px;
+  background-color: transparent;
 }
 
 .btn-delete:hover {
-  background-color: #cc0000;
+  cursor: pointer;
 }
 
 .btn-delete:active {
   transform: scale(0.97);
+}
+
+.btn-edit {
+  text-decoration: none;
+}
+
+.btn-edit:hover {
+  text-decoration: none;
+}
+
+.btn-edit:active {
+  transform: scale(0.97);
+}
+
+.btn-save {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-save:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-save:active {
+  transform: scale(0.97);
+}
+
+.btn-cancel:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 table {
@@ -166,7 +204,6 @@ th {
   z-index: 1;
 }
 
-/* Body */
 tbody {
   display: block;
   max-height: 60vh;
